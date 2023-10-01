@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         
-        //transform.position = mousePos;
+        if (mousePos.x > 0) mousePos.x = 0; // clamp player x position
+        
         GetComponent<Rigidbody2D>().MovePosition(mousePos);
     }
 }
