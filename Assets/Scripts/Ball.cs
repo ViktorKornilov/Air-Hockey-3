@@ -1,7 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public TMP_Text playerScoreText;
+    public TMP_Text enemyScoreText;
+    
+    public int playerScore = 0;
+    public int enemyScore = 0;
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name.Contains("Goal"))
@@ -12,15 +19,14 @@ public class Ball : MonoBehaviour
 
         if (other.gameObject.name.Contains("Enemy Goal"))
         {
-            // score++
+            playerScore++;
+            playerScoreText.text = playerScore.ToString();
+        }
+        
+        if (other.gameObject.name.Contains("Player Goal"))
+        {
+            enemyScore++;
+            enemyScoreText.text = enemyScore.ToString();
         }
     }
-    
-    // Detect if ball collides with player/enemy goal
-    // increase score for player/enemy
-    // show score using TextMeshPro
-    // create webGL build
-    // publish github.com repo and create readme.md file with webgl build link
-    // copy link to discord
-    
 }
