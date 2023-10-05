@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
@@ -8,7 +10,16 @@ public class Ball : MonoBehaviour
     
     public int playerScore = 0;
     public int enemyScore = 0;
-    
+
+    private void Update()
+    {
+        //var speed = GetComponent<Rigidbody2D>().velocity.magnitude;
+        //if (speed <= 0.01f)
+        //{
+        //    GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+        //}
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name.Contains("Goal"))
