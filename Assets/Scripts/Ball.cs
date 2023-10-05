@@ -22,6 +22,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        GetComponent<AudioSource>().Play();
+        
         if (other.gameObject.name.Contains("Goal"))
         {
             transform.position = Vector3.zero;
