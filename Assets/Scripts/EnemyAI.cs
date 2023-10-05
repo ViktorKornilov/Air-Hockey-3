@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -11,9 +12,19 @@ public class EnemyAI : MonoBehaviour
     float speed = 10;
 
     private Vector3 targetPosition;
+    private Vector3 defensePointOffset;
+
+    public float moveCooldown;
     
     private void Update()
     {
+        moveCooldown -= Time.deltaTime;
+        if (moveCooldown <= 0)
+        {
+            defensePointOffset = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f));
+            moveCooldown = 2;
+        }
+        
         bool ballInRange = ball.position.x > 0;
 
         if (ballInRange)
@@ -26,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         {
             // defense 
             targetPosition = defensePoint.position;
+            targetPosition += defensePointOffset;
             speed = defenseSpeed;
         }
         
