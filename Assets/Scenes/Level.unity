@@ -150,7 +150,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 25211301}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cfce8d47e0f1c4f2882fe9adcba909cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -280,7 +280,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 39199771}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cfce8d47e0f1c4f2882fe9adcba909cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -467,6 +467,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &96785767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96785768}
+  m_Layer: 0
+  m_Name: Death Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &96785768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96785767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.51, y: 5.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &222913901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1163,7 @@ Transform:
   m_GameObject: {fileID: 593289808}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.53, y: 1.83, z: 0}
+  m_LocalPosition: {x: -1.5, y: -0.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1219,6 +1250,8 @@ MonoBehaviour:
   enemyScore: 0
   hitSound: {fileID: 8300000, guid: 5eff2250213cd44269edaa48ed1358bb, type: 3}
   goalSound: {fileID: 8300000, guid: f0be525f35e5b476d94def5ad3f397b5, type: 3}
+  shouldRespawn: 0
+  deathPoint: {fileID: 96785768}
 --- !u!82 &593289814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1446,7 +1479,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 608246739}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cfce8d47e0f1c4f2882fe9adcba909cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2499,7 +2532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 593289810}
   defensePoint: {fileID: 1902334129}
-  attackSpeed: 20
+  attackSpeed: 10
   defenseSpeed: 10
   moveCooldown: 2
 --- !u!50 &1223826633
@@ -2804,7 +2837,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1428778162}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cfce8d47e0f1c4f2882fe9adcba909cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3773,3 +3806,4 @@ SceneRoots:
   - {fileID: 608246742}
   - {fileID: 1428778165}
   - {fileID: 39199774}
+  - {fileID: 96785768}

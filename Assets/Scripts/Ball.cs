@@ -1,7 +1,8 @@
-using System;
+
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
+
 
 public class Ball : MonoBehaviour
 {
@@ -54,17 +55,7 @@ public class Ball : MonoBehaviour
         source.clip = hitSound;
         source.Play();
         
-        if (other.gameObject.name.Contains("Goal"))
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            
-            source.clip = goalSound;
-            source.Play();
-
-            shouldRespawn = true;
-            transform.position = deathPoint.position;
-        }
-
+        
         if (other.gameObject.name.Contains("Enemy Goal"))
         {
             playerScore++;
@@ -78,5 +69,24 @@ public class Ball : MonoBehaviour
             enemyScoreText.text = enemyScore.ToString();
             respawnPosition = Vector3.left;
         }
+        
+        
+        if (other.gameObject.name.Contains("Goal"))
+        {
+            if (playerScore >= 7 || enemyScore >= 7)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            
+            source.clip = goalSound;
+            source.Play();
+
+            shouldRespawn = true;
+            transform.position = deathPoint.position;
+            
+        }
+
     }
 }
