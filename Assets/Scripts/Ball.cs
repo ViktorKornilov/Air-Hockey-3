@@ -15,6 +15,11 @@ public class Ball : MonoBehaviour
     public AudioClip goalSound;
     AudioSource source;
 
+    public bool shouldRespawn;
+    public Transform deathPoint;
+    float respawnTimer;
+    Vector3 respawnPosition;
+    
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -28,6 +33,19 @@ public class Ball : MonoBehaviour
         {
             transform.position = Vector3.zero;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            print("ball teleported back to level!");
+        }
+
+        // if goal, after 2 seconds teleport ball back
+        if (shouldRespawn)
+        {
+            respawnTimer += Time.deltaTime;
+            if (respawnTimer >= 2)
+            {
+                transform.position = respawnPosition;
+                respawnTimer = 0;
+                shouldRespawn = false;
+            }
         }
     }
 
@@ -38,23 +56,27 @@ public class Ball : MonoBehaviour
         
         if (other.gameObject.name.Contains("Goal"))
         {
-            transform.position = Vector3.zero;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             
             source.clip = goalSound;
             source.Play();
+
+            shouldRespawn = true;
+            transform.position = deathPoint.position;
         }
 
         if (other.gameObject.name.Contains("Enemy Goal"))
         {
             playerScore++;
             playerScoreText.text = playerScore.ToString();
+            respawnPosition = Vector3.right;
         }
         
         if (other.gameObject.name.Contains("Player Goal"))
         {
             enemyScore++;
             enemyScoreText.text = enemyScore.ToString();
+            respawnPosition = Vector3.left;
         }
     }
 }
