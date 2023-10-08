@@ -11,23 +11,38 @@ public class Ball : MonoBehaviour
     public int playerScore = 0;
     public int enemyScore = 0;
 
+    public AudioClip hitSound;
+    public AudioClip goalSound;
+    AudioSource source;
+
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
-        //var speed = GetComponent<Rigidbody2D>().velocity.magnitude;
-        //if (speed <= 0.01f)
-        //{
-        //    GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
-        //}
+        // teleport ball back if it glitches out of the level
+        var distanceToCenter = Vector3.Distance(Vector3.zero, transform.position);
+        if (distanceToCenter > 10)
+        {
+            transform.position = Vector3.zero;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        GetComponent<AudioSource>().Play();
+        source.clip = hitSound;
+        source.Play();
         
         if (other.gameObject.name.Contains("Goal"))
         {
             transform.position = Vector3.zero;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            
+            source.clip = goalSound;
+            source.Play();
         }
 
         if (other.gameObject.name.Contains("Enemy Goal"))
