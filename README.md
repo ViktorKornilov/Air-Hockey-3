@@ -10,5 +10,5 @@ Siimple air hockey with AI opponent
 - scoring
 
 ## Student versions
-Emilis - https://play.unity.com/mg/other/webgl-builds-373550
-Nojus - https://github.com/NoJuice1st/AirHockey2d
+- Emilis : https://play.unity.com/mg/other/webgl-builds-373550
+- Nojus : https://github.com/NoJuice1st/AirHockey2d
